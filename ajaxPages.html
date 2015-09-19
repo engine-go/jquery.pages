@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Pages plugin remote test</title>
+	<link href="./css/jquery.pages.css" rel="stylesheet">
+	<link href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+	<style>
+	div.center-container{
+		margin: 0 auto;
+		max-width: 800px;
+	}
+	#data-table{
+		min-height: 300px;
+	}
+	</style>
+</head>
+<body>
+<div class="center-container">
+	<h3>Ajax分页测试</h3>
+	<table id="data-table" class="table table-striped table-bordered">
+		<tr><th width="50%">Name</th><th width="50%">Age</th></tr>
+		<tr class="data-tr"><td>NealLi</td><td>24</td></tr>
+	</table>
+	<div class="page"></div>
+</div>
+<script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="./js/jquery.pages.js"></script>
+<script>
+
+var pageLimit = 5,
+	dataCount = 0;
+
+$(function(){
+
+	init();
+
+});
+
+//init
+function init(){
+
+	//get first page
+	$.get('http://nblog.9451.com/getList.php?page=1&pageLimit='+pageLimit, function(res){
+		res = JSON.parse(res);
+
+		dataCount = res.count;
+
+		showdata(res.list);
+
+		//init page plugin
+		$("div.page").pages({
+			url: 'http://nblog.9451.com/getList.php',
+			dataCount: dataCount,
+			pageLimit: pageLimit,
+			callBack: function(res, page){
+				res = JSON.parse(res);
+				showdata(res.list);
+			}
+		});
+	});
+}
+
+//showdata
+function showdata(data){
+	var table = $("#data-table"),
+		tpl = '',
+		i;
+
+	for(i=0; i<data.length; i++){
+		tpl += '<tr class="data-tr"><td>'+ data[i].name +'</td><td>'+ data[i].age +'</td></tr>';
+	}
+
+	table.find('tr.data-tr')
+			.remove()
+			.end()
+			.append(tpl);
+
+}
+
+</script>
+</body>
+</html>

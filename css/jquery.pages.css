@@ -1,0 +1,53 @@
+.page{
+  float: right;
+  margin-right: 45px;
+  font-family: "微软雅黑";
+  margin-top:25px;
+  margin-bottom: 20px;
+}
+.page .page-tip{
+  border:0;
+  font-size:12px;
+  margin-right:8px;
+}
+.page span,.page a{
+  border:1px #ddd solid;
+  text-align:center;
+  color:#646464;
+  height:28px;
+  line-height:28px;
+  font-family: "微软雅黑";
+  font-size:12px;
+  display:block;
+  float:left;
+  min-width: 28px;
+  margin:0 1px;
+}
+.page a:hover{
+  background:#e4e4e4;
+}
+.page .page-first{
+  border-left:1px #ccc solid;
+}
+.page .page-last,
+.page .page-lasted,
+.page .page-next,
+.page .page-nexted,
+.page .page-first,
+.page .page-firsted,
+.page .page-end,
+.page .page-prev,
+.page .page-preved{
+  font-size: 10px;
+  font-family: "宋体";
+}
+.page .page-active{
+  border:1px #82b11d solid;
+  color:#82b11d;
+}
+.orderexec{
+  cursor: pointer;
+}
+.list-active{
+  background:#f7f7f7;
+}
