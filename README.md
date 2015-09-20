@@ -12,29 +12,26 @@
 <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
 <script src="./js/jquery.pages.js"></script>
 ```
-### 对本地数据进行分页显示
+### 初始化参数
 ----
-如接收分页内容的元素为： 
-```html
-<div class="page"></div>
-```
+
 初始化分页插件：
 ```javascript
 $(function(){
   	//init page plugin
   	$("div.page").pages({
-  	  url: '',                
+  	  	url: '',                
   		type: 'static',       
-  		dataCount: 0,   //
-  		pageLimit: 20,   //
-  		labelCount: 10,				  //
-			lang: {					        //
-				total: '共 ',
-				records_desc: '条数据 本页 ',
-				item: ' 条，',
-				page: ' 页'
-			},
-  		callBack: function(/*arguements*/){} //
+  		dataCount: 0,   
+  		pageLimit: 20,   
+  		labelCount: 10,				  
+		lang: {					        
+			total: '共 ',
+			records_desc: '条数据 本页 ',
+			item: ' 条，',
+			page: ' 页'
+		},
+  		callback: function(/*arguements*/){} 
   	});
 });
 ```
@@ -48,3 +45,23 @@ $(function(){
 |labelCount             | 最多显示的页码个数 如: 1,2,3,4,5 默认显示10个页码标签                                     |
 |lang                   | 分页数据提示 以上代码中的为默认值，可自行修改                                             |
 |callback               | 分页标签点击回调函数。本地分页接收一个参数为当前的页码；Ajax分页接收两个参数请求的返回数据和pages对象本身|
+
+###对本地数据进行分页显示
+> 必须参数 **type**,**dataCount**,**callback** 返回当前的页面
+
+如接收分页内容的元素为： 
+```html
+<div class="page"></div>
+```
+```javascript
+var dataCount = 100,
+    pageLimit = 20;
+$("div.page").pages({
+	type: 'static',
+	dataCount: dataCount,
+	pageLimit: pageLimit,
+	callback: function(pageno){
+		showdata(pageno)
+	}
+});
+```
