@@ -6,7 +6,7 @@
 - 本地数据进行分页显示
 
 #使用方法
-引入"jQuery.pages.css"(样式根据自己主题自行修改)
+引入"jquery.pages.css"(样式根据自己主题自行修改)
 ```html
 <link href="./css/jquery.pages.css" rel="stylesheet">
 ```
