@@ -47,12 +47,13 @@ $(function(){
 |callback               | 分页标签点击回调函数。本地分页接收一个参数为当前的页码；Ajax分页接收两个参数请求的返回数据和pages对象本身|
 
 ###对本地数据进行分页显示
-> 必须参数 **type**,**dataCount**,**callback** 返回当前的页面
+> 必须参数 **type**,**dataCount**,**callback** 返回当前的页码
 
 如接收分页内容的元素为： 
 ```html
 <div class="page"></div>
 ```
+则本地分页初始化代码如下：
 ```javascript
 var dataCount = 100,
     pageLimit = 20;
@@ -65,3 +66,41 @@ $("div.page").pages({
 	}
 });
 ```
+[查看在线演示](http://demobygauze.sinaapp.com/pages/index.html)
+
+###对服务器数据进行分页显示
+> 必须参数 **dataCount**,**callback** 返回Ajax的返回数据，及分页插件对象本身
+
+如接收分页内容的元素为： 
+```html
+<div class="page"></div>
+```
+则Ajax分页初始化代码如下：
+```javascript
+var dataCount = 100,
+    pageLimit = 20;
+$("div.page").pages({
+	url: 'http://nblog.9451.com/getList.php', //可选，不传则使用当前页的地址
+	dataCount: dataCount,
+	pageLimit: pageLimit,
+	callBack: function(res, page){
+		res = JSON.parse(res);
+		showdata(res.list);
+	}
+});
+```
+> 如果使用php+smarty 先获取第一页的数据和总的数据条数，否则要先自己先获取第一页的数据和数据总数来初始化分页插件
+
+[查看在线演示](http://demobygauze.sinaapp.com/pages/ajaxPages.html)
+
+#插件属性
+- `curPage` :当前的页码
+- `dataCount` :数据总数
+- `pageLimit` :每页显示的条数
+- `url`	:当前的url地址【Ajax分页中】
+
+#插件方法
+- `refresh()` :刷新分页插件【可在更新了插件属性以后 调用该方法刷新分页】
+
+#兼容
+IE9+ 包括IE9，其他浏览器低版本未测试。低版本自己扩展indexOf等函数后可使用。
