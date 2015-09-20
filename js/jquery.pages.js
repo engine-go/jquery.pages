@@ -22,7 +22,7 @@
 						item: ' 条，',
 						page: ' 页'
 					},
-					callBack: function(){}		//Ajax执行成功的回调函数 会回传两个参数 res(ajax请求返回的数据) page(当前的page的jQuery对象)
+					callback: function(){}		//Ajax执行成功的回调函数 会回传两个参数 res(ajax请求返回的数据) page(当前的page的jQuery对象)
 				};
 			
 			//赋值
@@ -173,7 +173,7 @@
 				
 				if(defaults.type == 'static'){
 					//执行回调函数
-					defaults.callBack(page, _page);
+					defaults.callback(page, _page);
 					//改变当前页
 					_page.curPage = page;
 					//刷新分页
@@ -183,9 +183,9 @@
 				}
 				
 				$.get(doUrl(_page.url)+"&page="+page+"&pageLimit="+defaults.pageLimit, function(res){
-					if(defaults.callBack && typeof defaults.callBack == 'function'){
+					if(defaults.callback && typeof defaults.callback == 'function'){
 						//执行回调函数
-						defaults.callBack(res, _page);
+						defaults.callback(res, _page);
 						
 						//改变当前页
 						_page.curPage = page;
