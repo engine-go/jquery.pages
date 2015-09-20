@@ -6,6 +6,10 @@
 - 本地数据进行分页显示
 
 #使用方法
+引入"jQuery.pages.css"(样式根据自己主题自行修改)
+```html
+<link href="./css/jquery.pages.css" rel="stylesheet">
+```
 
 引入**jQuery**和**jquery.pages**插件，如图：
 ```html
@@ -91,7 +95,7 @@ $("div.page").pages({
 ```
 > 如果使用php+smarty 先获取第一页的数据和总的数据条数，否则要先自己先获取第一页的数据和数据总数来初始化分页插件
 
-[查看在线演示](http://demobygauze.sinaapp.com/pages/ajaxPages.html)
+[查看在线演示](http://demobygauze.sinaapp.com/pages/ajaxPages.html) (可打开调试工具观察请求URL)
 
 #插件属性
 - `curPage` :当前的页码
