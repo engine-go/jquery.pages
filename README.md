@@ -93,7 +93,7 @@ $("div.page").pages({
 	}
 });
 ```
-> 如果使用php+smarty 先获取第一页的数据和总的数据条数，否则要先自己先获取第一页的数据和数据总数来初始化分页插件
+> 如果使用php+smarty 先获取第一页的数据和总的数据条数，否则要自己先获取第一页的数据和数据总数来初始化分页插件
 
 [查看在线演示](http://demobygauze.sinaapp.com/pages/ajaxPages.html) (可打开调试工具观察请求URL)
 
